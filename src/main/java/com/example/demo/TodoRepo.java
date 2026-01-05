@@ -18,6 +18,6 @@ public class TodoRepo {
     public void updateTodo(int id, String description, TodoStatus status, String title){}
 
     public boolean deleteTodo(int id){
-        return true;
+
     }
 }
