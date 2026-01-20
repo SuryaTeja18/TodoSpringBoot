@@ -1,10 +1,20 @@
 package com.example.demo;
 
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+
+@DynamoDbBean
 public class Todo {
     int id;
     String title;
     String description;
     TodoStatus status;
+
+    public Todo(int id, String title, String description, TodoStatus status) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.status = status;
+    }
 
     public String getTitle() {
         return title;

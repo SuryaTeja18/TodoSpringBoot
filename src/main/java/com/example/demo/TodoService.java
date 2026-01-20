@@ -5,7 +5,11 @@ import java.util.List;
 
 @RestController
 public class TodoService {
-    TodoRepo repoDb = new  TodoRepo();
+    private final TodoRepo repoDb;
+
+    public TodoService(TodoRepo repoDb) {
+        this.repoDb = repoDb;
+    }
 
     @GetMapping(value = "/todos")
     public List<Todo> getAllTodos(){
