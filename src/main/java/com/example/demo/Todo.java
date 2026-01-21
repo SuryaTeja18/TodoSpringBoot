@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
+
 
 @DynamoDbBean
 public class Todo {
@@ -8,6 +10,10 @@ public class Todo {
     String title;
     String description;
     TodoStatus status;
+
+    public Todo() {
+
+    }
 
     public Todo(int id, String title, String description, TodoStatus status) {
         this.id = id;
@@ -34,6 +40,8 @@ public class Todo {
     public void setStatus(TodoStatus status) {
         this.status = status;
     }
+
+    @DynamoDbPartitionKey
     public int getId() {
         return id;
     }

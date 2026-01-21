@@ -22,8 +22,7 @@ public class TodoRepo {
         );
     }
 
-    public void save(int id, String description, TodoStatus status, String title){
-        Todo todo= new Todo(id, title, description, status);
+    public void save(Todo todo){
         todoTable.putItem(todo);
     }
 
@@ -37,13 +36,11 @@ public class TodoRepo {
         );
     }
 
-    public void updateTodo(int id, String description, TodoStatus status, String title){
-        Todo todo= new Todo(id, title, description, status);
-        todoTable.putItem(todo);
+    public void updateTodo(Todo todo){
+        todoTable.updateItem(todo);
     }
 
-    public boolean deleteTodo(int id){
+    public void deleteTodo(int id){
         todoTable.deleteItem(Key.builder().partitionValue(id).build());
-        return true;
     }
 }

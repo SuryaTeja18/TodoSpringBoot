@@ -1,6 +1,7 @@
 package com.example.demo;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @RestController
@@ -21,14 +22,15 @@ public class TodoService {
         return repoDb.getTodo(id);
     }
 
-    @PutMapping(value = "/todos/")
+    @PostMapping(value = "/todos")
     public void addTodo(@RequestBody Todo todo){
-        repoDb.save(todo.getId(), todo.getDescription(), todo.getStatus(), todo.getTitle());
+        System.out.println(todo);
+        repoDb.save(todo);
     }
 
     @PatchMapping(value = "/todo/{id}")
     public void updateTodoById(@PathVariable("id") String id, @RequestBody Todo todo){
-        repoDb.updateTodo(todo.getId(), todo.getDescription(), todo.getStatus(), todo.getTitle());
+        repoDb.updateTodo(todo);
     }
 
     @DeleteMapping(value ="/todo/{id}")
